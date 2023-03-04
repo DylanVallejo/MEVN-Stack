@@ -4,6 +4,21 @@
 ```
 npm install
 ```
+## Ejecutar back
+```
+npm start desde la carpeta root 
+```
+## ejecutar back desde su carpeta
+```
+npm start 
+```
+
+## Crear build del back 
+```
+npm tsc
+```   
+
+
 
 ### Compiles and hot-reloads for development
 ```

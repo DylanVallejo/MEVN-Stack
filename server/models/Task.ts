@@ -1,12 +1,12 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, version } from "mongoose";
 
 const taskSchema = new Schema({
     title: {
-        type: {
-            type:String,
-            required: true,
-            trim:true
-        }
+
+        type:String,
+        required: true,
+        trim:true
+
     },
     description: {
         type:String,
@@ -17,6 +17,11 @@ const taskSchema = new Schema({
         type: Boolean,
         default: false
     }
-});
+    
+    },
+    {
+        versionKey: false,
+    }
+);
 
 export default model("Task", taskSchema);
