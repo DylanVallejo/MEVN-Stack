@@ -34,7 +34,7 @@ router.get("/task/:id", async (req,res)=>{
         // const { params } = req;
         const  task = await Task.findById(req.params.id)
         if(!task) return res.status(404).send({message: "task not found"})
-        return res.send(`task by id : ${task}`)
+        return res.send(task)
         
     } catch (error) {
         console.log(error)
@@ -63,7 +63,7 @@ router.put("/task/:id", async (req,res)=>{
             new: true,
         });
         if(!updatedTask) return res.status(404).send({message: "task not found"});
-        return res.send(` task updated by id: ${updatedTask}`);
+        return res.send(updatedTask);
     } catch (error) {
         return res.status(500).send(error);
     }
