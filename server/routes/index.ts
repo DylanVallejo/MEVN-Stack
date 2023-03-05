@@ -11,7 +11,7 @@ router.get("/" ,( req,res) => {
 
 router.get("/tasks", async (req,res)=>{
     const tasks = await Task.find()
-    console.log(tasks)
+    // console.log(tasks)
     res.send(tasks)
     // res.send("get task")
 })
@@ -23,21 +23,23 @@ router.post("/task",async (req,res)=>{
     const task = new Task({title, description})
     await  task.save();
     // console.log(task) 
-    res.send(`Task created : ${task}`)
+    res.send(task)
 }) 
 
 
 router.get("/task/:id", async (req,res)=>{
     
     try {
-        console.log(req.params)
+        // console.log(req.params)
         // const { params } = req;
+        // console.log("weqrqwertasl")
         const  task = await Task.findById(req.params.id)
+        // console.log(task)
         if(!task) return res.status(404).send({message: "task not found"})
         return res.send(task)
         
     } catch (error) {
-        console.log(error)
+        // console.log(error)
         return res.status(500).send(error)
     } 
 })
@@ -47,7 +49,7 @@ router.delete("/task/:id", async (req,res)=>{
     try {
         const deletedTask = await Task.findByIdAndDelete(req.params.id)
         if(!deletedTask) return res.status(404).send({message: "task not found"})
-        res.send(` task deleted by id ${deletedTask}`)
+        res.send(deletedTask)
     } catch (error) {
         return res.status(500).send(error)
     }
